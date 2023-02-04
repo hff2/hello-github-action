@@ -9,7 +9,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - run: echo "🎉 ${{ secrets.ACTION_TOKEN }}"
     - name: Checkout code
       uses: actions/checkout@v3
 
@@ -20,7 +19,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.ACTION_TOKEN }}
         tag_name: ${{ env.GITHUB_SHA }}
       with:
-        tag_name: ${{ env.GITHUB_SHA }}
         release_name: Release ${{ env.GITHUB_SHA }}
         draft: false
         prerelease: false
