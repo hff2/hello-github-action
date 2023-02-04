@@ -9,10 +9,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - run: echo "🎉 ${{ secrets.ACTION_TOKEN }}"
     - name: Checkout code
       uses: actions/checkout@v3
 
     - name: Create release
+      
       uses: actions/create-release@v1
       env:
         GITHUB_TOKEN: ${{ secrets.ACTION_TOKEN }}
