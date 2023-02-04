@@ -1,3 +1,5 @@
+name: Trigger When Finsh Release
+run-name: Test Direct Release
 on:
   release:
     types: [published]
