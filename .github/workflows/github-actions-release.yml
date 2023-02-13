@@ -23,7 +23,6 @@ jobs:
         prerelease: false
     
     - name: install yq
-        id: setup-yq
         uses: shiipou/setup-yq-action@v2.2.0
     
     - name: display yq result
