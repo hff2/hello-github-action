@@ -23,7 +23,7 @@ jobs:
         prerelease: false
     
     - name: install yq
-        uses: shiipou/setup-yq-action@v2.2.0
+      - uses: chrisdickinson/setup-yq@latest
     
     - name: display yq result
         run: echo $(yq .deploy.frontend ./deploy/deploy.yml)
