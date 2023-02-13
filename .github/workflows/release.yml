@@ -1,13 +1,13 @@
-name: Trigger When Finsh Release
-run-name: Test Direct Release
-on:
-  release:
-    types: [published]
+#name: Trigger When Finsh Release
+#run-name: Test Direct Release
+#on:
+#  release:
+#    types: [published]
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
+#jobs:
+#  build:
+#    runs-on: ubuntu-latest
 
-    steps:
-    - name: Do something
-      run: echo "A new release was published!"
+#    steps:
+#    - name: Do something
+#      run: echo "A new release was published!"
