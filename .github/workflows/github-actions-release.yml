@@ -22,3 +22,6 @@ jobs:
         tag_name: ${{ github.event.milestone.title }}
         draft: false
         prerelease: false
+    
+    - name: upload file
+    - run:  gh release upload ${{ github.event.milestone.title }} release.yaml
