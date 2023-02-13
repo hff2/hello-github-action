@@ -11,7 +11,6 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
-
     - name: Create release
       uses: actions/create-release@v1
       env:
@@ -21,10 +20,8 @@ jobs:
         tag_name: ${{ github.event.milestone.title }}
         draft: false
         prerelease: false
-    
     - name: install yq
       - uses: chrisdickinson/setup-yq@latest
-    
     - name: display yq result
         run: echo $(yq .deploy.frontend ./deploy/deploy.yml)
 
