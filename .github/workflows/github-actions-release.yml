@@ -29,7 +29,7 @@ jobs:
     - name: display yq result
         run: echo $(yq .deploy.frontend ./deploy/deploy.yml)
 
-    - name: upload file
-      env:
-          GITHUB_TOKEN: ${{ secrets.ACTION_TOKEN }}
-      run:  gh release upload ${{ github.event.milestone.title }} release.yml
+    #- name: upload file
+    #  env:
+    #      GITHUB_TOKEN: ${{ secrets.ACTION_TOKEN }}
+    #  run: gh release upload ${{ github.event.milestone.title }} release.yml
