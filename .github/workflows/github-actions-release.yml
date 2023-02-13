@@ -21,11 +21,11 @@ jobs:
         draft: false
         prerelease: false
     - name: install yq
-      - uses: chrisdickinson/setup-yq@latest
+      uses: chrisdickinson/setup-yq@latest
     - name: display yq result
-        run: echo $(yq .deploy.frontend ./deploy/deploy.yml)
+      run: echo $(yq .deploy.frontend ./deploy/deploy.yml)
 
-    #- name: upload file
-    #  env:
-    #      GITHUB_TOKEN: ${{ secrets.ACTION_TOKEN }}
-    #  run: gh release upload ${{ github.event.milestone.title }} release.yml
+    - name: upload file
+      env:
+          GITHUB_TOKEN: ${{ secrets.ACTION_TOKEN }}
+      run: gh release upload ${{ github.event.milestone.title }} release.yml
