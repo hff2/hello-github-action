@@ -21,9 +21,7 @@ jobs:
       
     - name: display yq result
       run: |
-        frontend=$(yq .deploy.backend ./deploy/deploy.yml)
-        echo "Test"
-        echo $(frontend)
+        echo $(yq .deploy.backend ./deploy/deploy.yml)
 
     - name: upload file
       env:
