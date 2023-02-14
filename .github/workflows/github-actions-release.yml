@@ -39,5 +39,5 @@ jobs:
           ${{ secrets.OCI_API_KEY }}
         
     - name: Download oci file
-      run: oci os bulk-list --bucket-name Dyna-CNS
+      run: oci os object get --namespace nrxtlgtjdbvi --bucket-name Dyna-CNS --name CTBC_Frontend --file '119d1c1c4c94a0e1de60db756438d147692943e0.zip'
 #       run: oci os object bulk-upload -bn ${{ secrets.OCI_BUCTET_NAME }} --src-dir ./target --include '*.jar' --overwrite
