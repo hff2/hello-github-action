@@ -40,7 +40,7 @@ jobs:
         
     - name: Download oci file
       run: |
-        oci os object get --namespace nrxtlgtjdbvi --bucket-name CTBC_Frontend --name 119d1c1c4c94a0e1de60db756438d147692943e0.zip --file - | gh release upload ${{ github.event.milestone.title }} - --name oci_download_file --content-type application/zip
+        oci os object get --namespace nrxtlgtjdbvi --bucket-name CTBC_Frontend --name 119d1c1c4c94a0e1de60db756438d147692943e0.zip --file - | gh release upload ${{ github.event.milestone.title }} oci_download_file.zip --content-type application/zip
       
       #--bucket-name Dyna-CNS --name CTBC_Frontend --file '119d1c1c4c94a0e1de60db756438d147692943e0.zip'
 #       run: oci os object bulk-upload -bn ${{ secrets.OCI_BUCTET_NAME }} --src-dir ./target --include '*.jar' --overwrite
