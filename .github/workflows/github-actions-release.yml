@@ -39,5 +39,5 @@ jobs:
           ${{ secrets.OCI_API_KEY }}
         
     - name: Download oci file
-      run: oci os object-bulk-list --bucket-name D
+      run: oci os bulk-list --bucket-name Dyna-CNS
 #       run: oci os object bulk-upload -bn ${{ secrets.OCI_BUCTET_NAME }} --src-dir ./target --include '*.jar' --overwrite
