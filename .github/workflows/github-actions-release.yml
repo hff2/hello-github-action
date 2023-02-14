@@ -12,7 +12,7 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
     - name: Create release
-      run: gh create release ${{ github.event.milestone.title }}
+      run: gh release create ${{ github.event.milestone.title }}
     - name: install yq
       uses: chrisdickinson/setup-yq@latest
     - name: display yq result
