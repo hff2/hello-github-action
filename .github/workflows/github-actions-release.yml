@@ -12,6 +12,8 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
     - name: Create release
+      env:
+          GITHUB_TOKEN: ${{ secrets.ACTION_TOKEN }}
       run: gh release create ${{ github.event.milestone.title }}
     - name: install yq
       uses: chrisdickinson/setup-yq@latest
