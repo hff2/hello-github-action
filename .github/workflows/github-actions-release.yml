@@ -41,11 +41,8 @@ jobs:
     - name: Download oci file
       run: |
         echo "os ns list"
-        oci os ns list
-        echo "oci os ns get"
         oci os ns get
-        echo "oci os bucket get"
-        oci os bucket get
+
         
         
       
