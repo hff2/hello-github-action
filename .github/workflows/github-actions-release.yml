@@ -19,8 +19,8 @@ jobs:
       uses: chrisdickinson/setup-yq@latest
     - name: display yq result
       run: |
-        value: yq .deploy.frontend ./deploy/deploy.yml
-        echo $(value)
+        frontend=yq .deploy.frontend ./deploy/deploy.yml
+        echo $(frontend)
 
     - name: upload file
       env:
