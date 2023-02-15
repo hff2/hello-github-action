@@ -20,8 +20,8 @@ jobs:
       uses: shiipou/setup-yq-action@v2.2.0
       
     - name: display yq result
-      run: |
-        versionHash: $(yq .deploy.backend ./deploy/deploy.yml)
+      env:
+        VERSION_SHA: $(yq .deploy.backend ./deploy/deploy.yml)
         
     - name: Install oci-cli
       uses: bytesbay/oci-cli-action@v1.0.2
@@ -34,9 +34,9 @@ jobs:
           ${{ secrets.OCI_API_KEY }}
         
     - name: Download oci file
-      run: oci os object bulk-download -bn ${{ secrets.PROJECT_NAME }} --download-dir . --prefix ${{versionHash}}.jar
+      run: oci os object bulk-download -bn ${{ secrets.PROJECT_NAME }} --download-dir . --prefix ${{VERSION_SHA}}.jar
       
     - name: display file
       env:
             GITHUB_TOKEN: ${{ secrets.ACTION_TOKEN }}
-      run: gh release upload ${{ github.event.milestone.title }} ${{versionHash}}.jar
+      run: gh release upload ${{ github.event.milestone.title }} ${{VERSION_SHA}}.jar
