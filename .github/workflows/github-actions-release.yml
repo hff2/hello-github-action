@@ -22,7 +22,7 @@ jobs:
     - name: display yq result
       run: echo "VERSION_SHA=$(yq .deploy.backend ./deploy/deploy.yml)"
     - name: Test
-      run: echo ${{VERSION_SHA}}
+      run: echo $VERSION_SHA
 #     - name: Install oci-cli
 #       uses: bytesbay/oci-cli-action@v1.0.2
 #       with:
