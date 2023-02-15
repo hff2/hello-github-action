@@ -21,7 +21,7 @@ jobs:
       
     - name: display yq result
       run: |
-        echo $(yq .deploy.backend ./deploy/deploy.yml)
+        versionSHA: $(yq .deploy.backend ./deploy/deploy.yml)
         
     - name: Install oci-cli
       uses: bytesbay/oci-cli-action@v1.0.2
@@ -34,10 +34,9 @@ jobs:
           ${{ secrets.OCI_API_KEY }}
         
     - name: Download oci file
-      run: |
-        oci os object bulk-download -bn CTBC_Backend --download-dir . --prefix 0a4b62ca1347c482a7871a8fd5a4886433d19b4d.jar
+      run: oci os object bulk-download -bn ${{ secrets.PROJECT_NAME }} --download-dir . --prefix ${{versionSHA}}.jar
+      
     - name: display file
       env:
             GITHUB_TOKEN: ${{ secrets.ACTION_TOKEN }}
-      run: |
-        gh release upload ${{ github.event.milestone.title }} 0a4b62ca1347c482a7871a8fd5a4886433d19b4d.jar
+      run: gh release upload ${{ github.event.milestone.title }} ${{versionSHA}}.jar
