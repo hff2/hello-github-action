@@ -22,7 +22,10 @@ jobs:
     - name: Get variable from YAML file
       id: get_var
       run: echo "::set-output name=VERSION_SHA::$(yq .deploy.backend ./deploy/deploy.yml)"
-      
+    - name: Set output
+      run: |
+        echo "VERSION_SHA=$(yq .deploy.backend ./deploy/deploy.yml)" >> $GITHUB_OUTPUT
+        echo $GITHUB_OUTPUT
     - name: Install oci-cli
       uses: bytesbay/oci-cli-action@v1.0.2
       with:
@@ -33,10 +36,10 @@ jobs:
         api_key: |
           ${{ secrets.OCI_API_KEY }}
         
-    - name: Download oci file
-      run: oci os object bulk-download -bn ${{ secrets.PROJECT_NAME }} --download-dir . --prefix ${{ steps.get_var.outputs.VERSION_SHA }}.jar
+#     - name: Download oci file
+#       run: oci os object bulk-download -bn ${{ secrets.PROJECT_NAME }} --download-dir . --prefix ${{ steps.get_var.outputs.VERSION_SHA }}.jar
       
-    - name: display file
-      env:
-            GITHUB_TOKEN: ${{ secrets.ACTION_TOKEN }}
-      run: gh release upload ${{ github.event.milestone.title }} ${{ steps.get_var.outputs.VERSION_SHA }}.jar
+#     - name: display file
+#       env:
+#             GITHUB_TOKEN: ${{ secrets.ACTION_TOKEN }}
+#       run: gh release upload ${{ github.event.milestone.title }} ${{ steps.get_var.outputs.VERSION_SHA }}.jar
