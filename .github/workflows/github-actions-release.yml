@@ -42,7 +42,7 @@ jobs:
       run: |
         oci os object bulk-download -bn CTBC_Backend --download-dir . --prefix 0a4b62ca1347c482a7871a8fd5a4886433d19b4d.jar
     - name: display file
+      env:
+            GITHUB_TOKEN: ${{ secrets.ACTION_TOKEN }}
       run: |
-        pwd
-        ls
-#         oci os object get --namespace nrxtlgtjdbvi --bucket-name CTBC_Frontend --name 119d1c1c4c94a0e1de60db756438d147692943e0.zip --file @- | curl -X POST -H "Authorization: token ${{ secrets.ACTION_TOKEN }}" -H "Content-Type: application/zip" --data-binary @- "https://uploads.github.com/repos/hff2/hello-github-action/releases/${{ github.event.milestone.title }}/assets?name=oci_download_frontend"
+        gh release upload ${{ github.event.milestone.title }} 0a4b62ca1347c482a7871a8fd5a4886433d19b4d.jar
