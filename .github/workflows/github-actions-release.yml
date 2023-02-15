@@ -33,9 +33,9 @@ jobs:
           ${{ secrets.OCI_API_KEY }}
         
     - name: Download oci file
-      run: oci os object bulk-download -bn ${{ secrets.PROJECT_NAME }} --download-dir . --prefix $VERSION_SHA.jar
+      run: oci os object bulk-download -bn ${{ secrets.PROJECT_NAME }} --download-dir . --prefix ${{ env.GITHUB_SHA_SHORT }}.jar
       
     - name: display file
       env:
             GITHUB_TOKEN: ${{ secrets.ACTION_TOKEN }}
-      run: gh release upload ${{ github.event.milestone.title }} $VERSION_SHA.jar
+      run: gh release upload ${{ github.event.milestone.title }} ${{ env.GITHUB_SHA_SHORT }}.jar
