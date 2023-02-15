@@ -19,13 +19,11 @@ jobs:
       id: setup-yq
       uses: shiipou/setup-yq-action@v2.2.0
          
-    - name: Get variable from YAML file
-      id: get_var
-      run: echo "::set-output name=VERSION_SHA::$(yq .deploy.backend ./deploy/deploy.yml)"
     - name: Set output
       run: |
-        echo "VERSION_SHA=$(yq .deploy.backend ./deploy/deploy.yml)" >> $GITHUB_OUTPUT
-        echo $GITHUB_OUTPUT
+        echo "VERSION_SHA=$(yq .deploy.backend ./deploy/deploy.yml)" >> $GITHUB_ENV
+        echo ${{env.VERSION_SHA}}
+        
     - name: Install oci-cli
       uses: bytesbay/oci-cli-action@v1.0.2
       with:
